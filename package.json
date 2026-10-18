@@ -1,0 +1,23 @@
+{
+  "name": "translate-cli",
+  "version": "1.0.0",
+  "description": "Look up an English word and list all its meanings from the Collins dictionary (served by Youdao)",
+  "type": "module",
+  "bin": {
+    "translate": "bin/translate.js"
+  },
+  "scripts": {
+    "start": "node bin/translate.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "cli",
+    "dictionary",
+    "collins",
+    "youdao",
+    "translate"
+  ],
+  "license": "MIT"
+}
