@@ -37,18 +37,28 @@ hello
 
 Requires Node.js ≥ 18 (no dependencies at all).
 
+**From npm (once published):**
+
 ```sh
-# make the `translate` command available everywhere
-npm link
+npm install -g @cloudedseal/translate-cli
+translate hello
 ```
 
-Or without linking, run it directly:
+**From source (development):**
+
+```sh
+git clone https://github.com/cloudedseal/translate-cli
+cd translate-cli
+npm link                # puts the `translate` command on your PATH
+```
+
+Or run directly without linking:
 
 ```sh
 node bin/translate.js hello
 ```
 
-To remove the global command later: `npm unlink -g translate-cli`
+To remove the global command later: `npm unlink -g @cloudedseal/translate-cli`
 
 ## Usage
 
@@ -97,6 +107,7 @@ Notes:
 ## Project layout
 
 ```
+.github/workflows/publish.yml  auto-publish to npm on GitHub Release
 bin/translate.js    CLI entry point: args, formatting, output
 lib/youdao.js       source chain (JSON → HTML fallback), HTML-page parsing
 lib/youdao-json.js  JSON endpoint fetch + Collins/ec/phrases parsing

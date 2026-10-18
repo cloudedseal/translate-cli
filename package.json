@@ -1,13 +1,25 @@
 {
-  "name": "translate-cli",
+  "name": "@cloudedseal/translate-cli",
   "version": "1.0.0",
-  "description": "Look up an English word and list all its meanings from the Collins dictionary (served by Youdao)",
+  "description": "CLI to list all meanings of an English word from the Collins dictionary (phonetics, POS tags, examples, phrases)",
   "type": "module",
   "bin": {
     "translate": "bin/translate.js"
   },
+  "files": [
+    "bin",
+    "lib"
+  ],
   "scripts": {
     "start": "node bin/translate.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudedseal/translate-cli.git"
+  },
+  "homepage": "https://github.com/cloudedseal/translate-cli#readme",
+  "bugs": {
+    "url": "https://github.com/cloudedseal/translate-cli/issues"
   },
   "engines": {
     "node": ">=18"
@@ -17,7 +29,13 @@
     "dictionary",
     "collins",
     "youdao",
-    "translate"
+    "translate",
+    "meaning",
+    "english"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "license": "MIT"
 }

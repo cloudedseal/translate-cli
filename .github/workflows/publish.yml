@@ -1,0 +1,35 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: Smoke test
+        run: |
+          node bin/translate.js --version
+          node --input-type=module -e "
+            import { parseDictionary } from './lib/youdao.js';
+            const r = parseDictionary('<div id=\"phrsListTab\"><h2><span class=\"keyword\">x</span></h2><div class=\"trans-container\"><ul><li>n. test</li></ul></div></div>');
+            if (!r.found || r.meanings[0] !== 'n. test') { console.error('parser check failed'); process.exit(1); }
+            console.log('parser check ok');
+          "
+
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
